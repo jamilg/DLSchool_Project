@@ -1,0 +1,66 @@
+{# This simple template derives from ``base.html``. See ``base.html`` for
+   more information about template inheritance. #}
+{%- extends "base.html" %}
+
+{# Loads some of the macros included with Flask-Bootstrap. We are using the
+   utils module here to automatically render Flask's flashed messages in a
+   bootstrap friendly manner #}
+{% import "bootstrap/utils.html" as utils %}
+
+
+{# Inside the ``content`` is where you should place most of your own stuff.
+   This will keep scripts at the page end and a navbar you add on later
+   intact. #}
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Object Detection Demo (very simple one)</h2>
+
+            <p>Это финальный проект первой части курса Школы Глубокого Обучения.</p>
+
+            <p>За основу этого проекта я взял работу Ильи Захаркина по анализу текста.<br>
+            Оригинал работы можно посмотреть по адресу:<br>
+            <a href="https://github.com/izaharkin/Respalyzer">https://github.com/izaharkin/Respalyzer</a></p>
+
+            <p>Я заменил движок на детектор изображений из TensorFlow Object Detection API.<br>
+            За основу скрипта движка брались честно нагугленные, осознанные и адаптированные куски разных имплементаций.<br>
+            Больше всего помог этот репозиторий:<br>
+            <a href="https://github.com/VictorRancesCode/FlaskObjectDetection">https://github.com/VictorRancesCode/FlaskObjectDetection</a>
+
+            <p>Это очень простой пример работы детектора объектов.</p>
+
+            <p>Немного о том, что получилось, и о том, что требует допиливания и улучщения.
+
+            <p>Из плюсов:<br>
+              <ul>
+            <li>Самое главное достоинство этого проекта в том, что он работает и возвращает картинки с ббоксами.</li>
+            <li>Выделил код детектирования в отдельный класс. Так гораздо чище.</li>            
+            <li>Удалось немного разобраться в работе фласка и вообще веб-технологий.</li>
+            <li>В файле с формой (forms.py) заменил стандартную форму на улучшенную из flask_wtf и использовал валидаторы FileRequired() и FileAllowed() для проверки типа файла (картинка).</li>
+            <li>Удалось разобрать и немного адаптировать скрипт, который показывает оригинальную картинку перед загрузкой изображения.</li>
+            <li>Сделал примитивную галерею, если можно так назвать. Показывает загруженные изображения.</li>
+              </ul>
+
+            <p>Из минусов и планов на будущее:<br>
+              <ul>
+            <li>Надо бы выделить код детектирования в отдельный класс. Но могу уже не успеть.</li>
+            <li>Файлы загружаются в статик папку, что не очень хорошо.</li>
+            <li>Можно было еще сохранять и показывать оригинальный файл отдельно.</li>
+            <li>Ну и не смог сделать распознавание с камеры. Не хватило времени.</li>
+              </ul>
+
+            <p><b>Для запуска приложения запустить следующую команду из директории с приложением:</b><br>
+
+            <code>python run.py</code>
+            </p>
+
+            <p>Приложение будет доступно по адресу <a href='http://127.0.0.1:5000'>http://127.0.0.1:5000</a> в любом браузере.</p>
+
+            <p><b>Спасибо организаторам и лекторам за прекрасный курс! </b></p>
+            
+            <p>Я уже далеко не студент, но получилось кучу новых знаний. С нетерпением жду второй семестр.</p>
+            <p>Привет из Вильнюса!<br>
+            Jamil Gasimov</p>
+        </div>
+    </div>
+{%- endblock %}

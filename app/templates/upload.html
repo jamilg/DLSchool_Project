@@ -1,0 +1,40 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{%- extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Загрузите изображение для детектирования объектов.</h2>
+            <p><b>Разрешенные форматы изображений: jpg, jpeg и png.</b></p>
+            <form method="post" novalidate enctype=multipart/form-data>
+                {{ form.hidden_tag() }}
+                {{ form.file }}
+                <input type="submit" value="Загрузить"><br>
+                {% for error in form.file.errors %}
+                <span style="color: red;">[{{error}}]</span>
+                {% endfor %}
+            <br>
+            <img id="image"><br/>
+            </form>
+
+            <script>
+            function init() {
+                var inputFile = document.getElementById('inputFile1');
+                inputFile.addEventListener('change', mostrarImagen, false);
+            }
+            function mostrarImagen(event) {
+                var file = event.target.files[0];
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    var img = document.getElementById('image');
+                    img.src = event.target.result;
+                    img.width = 600;
+                }
+                reader.readAsDataURL(file);
+            }
+            window.addEventListener('load', init, false);
+        	</script>
+        </div>
+    </div>
+{%- endblock %}

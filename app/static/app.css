@@ -1,0 +1,16 @@
+.input_form {
+    text-align: center;
+}
+
+.prediction_message {
+    text-align: center;
+}
+
+.app_h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 100px;
+}
+
+.navbar-text {
+    text-align: right;
+}

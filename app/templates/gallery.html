@@ -1,0 +1,22 @@
+{# This simple template derives from ``base.html``. See ``base.html`` for
+   more information about template inheritance. #}
+{%- extends "base.html" %}
+
+{# Loads some of the macros included with Flask-Bootstrap. We are using the
+   utils module here to automatically render Flask's flashed messages in a
+   bootstrap friendly manner #}
+{% import "bootstrap/utils.html" as utils %}
+
+
+{# Inside the ``content`` is where you should place most of your own stuff.
+   This will keep scripts at the page end and a navbar you add on later
+   intact. #}
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            {% for pic in pics %}
+            <p><a href="{{url_for('static', filename=pic)}}" target="_blank"> <img src="{{url_for('static', filename=pic)}}" alt="{{pic}}" width=400></a></p>
+            {% endfor %}
+        </div>
+    </div>
+{%- endblock %}

@@ -1,0 +1,32 @@
+{# This simple template derives from ``base.html``. See ``base.html`` for
+   more information about template inheritance. #}
+{%- extends "base.html" %}
+
+{# Loads some of the macros included with Flask-Bootstrap. We are using the
+   utils module here to automatically render Flask's flashed messages in a
+   bootstrap friendly manner #}
+{% import "bootstrap/utils.html" as utils %}
+
+
+{# Inside the ``content`` is where you should place most of your own stuff.
+   This will keep scripts at the page end and a navbar you add on later
+   intact. #}
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <img src = "{{ url_for('static', filename='images/logo_yellow_white.webp') }}">
+            <h1 class="app_h1">Object Detection Demo</h1>
+            <p>Based on the work by <a href="https://github.com/izaharkin">this guy</a></p>
+            <p>За основу этого проекта я взял работу Ильи Захаркина по анализу текста.<br>
+            Я заменил движок на детектор изображений из TensorFlow Object Detection API</p>
+            <p>Более подробно можно почитать <a href="{{url_for('frontend.about')}}">тут</a>.</p>
+            <p>
+            <form method="GET">
+                <button class="btn btn-lg btn-default" formaction="upload" type="submit">
+                    Нажмите, чтобы продолжить
+                </button>
+            </form>
+            </p>
+        </div>
+    </div>
+{%- endblock %}
